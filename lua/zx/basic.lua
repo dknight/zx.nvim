@@ -59,10 +59,8 @@ function M.run()
 			"-c",
 			string.format([[
 %s -nosound "%s" &
-EMU_PID=$!
-sleep 2
-WIN=$(xdotool search --pid $EMU_PID | tail -n1)
-xdotool windowactivate "$WIN"
+sleep 2.5
+xdotool search --name "%s" | tail -n1 | xargs xdotool windowactivate
 sleep 0.2
 xdotool key j
 sleep 0.2
@@ -82,6 +80,14 @@ xdotool key Return
 		}, {
 			detach = true,
 		})
+	else
+		vim.system(
+			string.format(
+				[[%s %s &]]
+				, opts.emulator, M.get_tap_file()
+			), {
+				detach = true,
+			})
 	end
 end
 
