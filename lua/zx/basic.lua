@@ -52,7 +52,7 @@ function M.run()
 
 	vim.notify("Emulation running...")
 
-	-- FIXME kinda hack just for me
+	-- FIXME kinda hack just for me remove later
 	vim.system({
 		"sh",
 		"-c",
@@ -60,7 +60,7 @@ function M.run()
 %s -nosound "%s" &
 sleep 3
 xdotool search --sync --name "%s" windowactivate
-sleep 0.3
+sleep 0.2
 xdotool key j
 sleep 0.2
 xdotool keydown Control_L
@@ -101,19 +101,19 @@ function M.renumber_lines()
 				if old_num == number then
 					table.insert(
 						new_lines,
-						string.format("%04d\t%s", old_num, rest)
+						string.format("%04d %s", old_num, rest)
 					)
 
 					number = number + step
 				elseif old_num > (number - step) and old_num < number then
 					table.insert(
 						new_lines,
-						string.format("%04d\t%s", old_num, rest)
+						string.format("%04d %s", old_num, rest)
 					)
 				else
 					table.insert(
 						new_lines,
-						string.format("%04d\t%s", number, rest)
+						string.format("%04d %s", number, rest)
 					)
 
 					number = number + step
@@ -121,7 +121,7 @@ function M.renumber_lines()
 			else
 				table.insert(
 					new_lines,
-					string.format("%04d\t%s", number, line)
+					string.format("%04d %s", number, line)
 				)
 
 				number = number + step
