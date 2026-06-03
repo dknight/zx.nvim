@@ -53,13 +53,16 @@ function M.run()
 	vim.notify("Emulation running...")
 
 	-- FIXME kinda hack just for me remove later
-	vim.system({
-		"sh",
-		"-c",
-		string.format([[
+	if opts.emu_hook then
+		vim.system({
+			"sh",
+			"-c",
+			string.format([[
 %s -nosound "%s" &
-sleep 3
-xdotool search --sync --name "%s" windowactivate
+EMU_PID=$!
+sleep 2
+WIN=$(xdotool search --pid $EMU_PID | tail -n1)
+xdotool windowactivate "$WIN"
 sleep 0.2
 xdotool key j
 sleep 0.2
@@ -76,9 +79,10 @@ sleep 0.2
 xdotool key r
 xdotool key Return
         ]], opts.emulator, M.get_tap_file(), opts.window_name),
-	}, {
-		detach = true,
-	})
+		}, {
+			detach = true,
+		})
+	end
 end
 
 function M.renumber_lines()

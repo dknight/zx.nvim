@@ -11,6 +11,9 @@ M.options = {
 	run_key = "<leader>r",
 	clean_key = "<leader>x",
 	renumber_key = "<leader>n",
+	-- temporary hook after running emulator
+	-- my hack with xdotool
+	emu_hook = false,
 }
 
 function M.setup(opts)
