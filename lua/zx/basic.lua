@@ -59,7 +59,7 @@ function M.run()
 			"-c",
 			string.format([[
 %s -nosound "%s" &
-sleep 2.5
+sleep 3
 xdotool search --name "%s" | tail -n1 | xargs xdotool windowactivate
 sleep 0.2
 xdotool key j
