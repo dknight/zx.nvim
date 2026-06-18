@@ -124,6 +124,7 @@ function M.setup()
 					desc = "Remove TAP/TZX files",
 				}
 			)
+			vim.bo.commentstring = "REM %s"
 		end,
 	})
 
