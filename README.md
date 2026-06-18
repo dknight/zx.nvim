@@ -30,19 +30,20 @@ Basic configuration. Here, `fbzx` is used as the emulator, but you can choose an
 
 ## Commands
 
-- `:ZXBuild` — build a TAP file
-- `:ZXRun` — build and run
-- `:ZXClean` — remove `*.tap` and `*.tzx` files
-- `:ZXRenumber` — renumber BASIC lines
+- `:ZXBuild` - build a TAP file
+- `:ZXRun` - build and run
+- `:ZXClean` - remove `*.tap` and `*.tzx` files
+- `:ZXRenumber` - renumber BASIC lines
 
 ## Keymaps
 
 Default key bindings:
 
-- `<leader>b` — build
-- `<leader>r` — run
-- `<leader>x` — clean
-- `<leader>n` — renumber BASIC lines
+- `<leader>b` - build
+- `<leader>r` - run
+- `<leader>x` - clean
+- `<leader>n` - renumber BASIC lines
+- `gcc` - comment line using BASIC REM statement, keeps line number.
 
 You can also define your own key bindings in the plugin configuration:
 
