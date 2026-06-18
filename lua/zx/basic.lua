@@ -81,11 +81,11 @@ xdotool key Return
 			detach = true,
 		})
 	else
-		vim.system(
-			string.format(
-				[[%s %s &]]
-				, opts.emulator, M.get_tap_file()
-			), {
+		vim.system({
+				opts.emulator,
+				M.get_tap_file(),
+			},
+			{
 				detach = true,
 			})
 	end
