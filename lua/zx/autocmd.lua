@@ -5,6 +5,35 @@ local utils = require("zx.utils")
 
 local M = {}
 
+local function toggle_basic_comment()
+	local row = vim.api.nvim_win_get_cursor(0)[1] - 1
+	local line = vim.api.nvim_buf_get_lines(0, row, row + 1, false)[1]
+
+	local num, code = line:match("^(%d+)%s+REM%s+(.*)$")
+	if num then
+		vim.api.nvim_buf_set_lines(
+			0,
+			row,
+			row + 1,
+			false,
+			{ string.format("%s %s", num, code) }
+		)
+		return
+	end
+
+	num, code = line:match("^(%d+)%s+(.*)$")
+	if num then
+		vim.api.nvim_buf_set_lines(
+			0,
+			row,
+			row + 1,
+			false,
+			{ string.format("%s REM %s", num, code) }
+		)
+	end
+end
+
+
 function M.setup()
 	local opts = config.options
 	----------------------------------------------------------------------
@@ -124,7 +153,7 @@ function M.setup()
 					desc = "Remove TAP/TZX files",
 				}
 			)
-			vim.bo.commentstring = "REM %s"
+			vim.keymap.set("n", "gcc", toggle_basic_comment)
 		end,
 	})
 
