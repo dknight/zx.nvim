@@ -153,7 +153,7 @@ function M.setup()
 					desc = "Remove TAP/TZX files",
 				}
 			)
-			vim.keymap.set("n", "gcc", toggle_basic_comment)
+			vim.keymap.set("n", "<leader>c", toggle_basic_comment)
 		end,
 	})
 

@@ -43,7 +43,7 @@ Default key bindings:
 - `<leader>r` - run
 - `<leader>x` - clean
 - `<leader>n` - renumber BASIC lines
-- `gcc` - comment line using BASIC REM statement, keeps line number.
+- `<leader>c` - comment line using BASIC REM statement, keeps line number.
 
 You can also define your own key bindings in the plugin configuration:
 
