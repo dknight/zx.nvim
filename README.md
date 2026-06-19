@@ -39,6 +39,38 @@ Basic configuration. Here, `fbzx` is used as the emulator, but you can choose an
 }
 ```
 
+### Full configuration options
+
+All configuration options can be overridden during plugin initialization.
+
+```lua
+{
+  "dknight/zx.nvim",
+  name = "zx.nvim",
+
+  -- Optional: LuaSnip support
+  dependencies = {
+    "L3MON4D3/LuaSnip",
+  },
+
+  opts = {
+    save_before_compile = true,
+    auto_renumber = true,
+
+    emulator = "fbzx",
+    window_name = "FBZX",
+
+    basic_compiler = "zmakebas",
+    assembler = "sjasmplus",
+
+    build_key = "<leader>b",
+    run_key = "<leader>r",
+    clean_key = "<leader>x",
+    renumber_key = "<leader>n",
+  },
+}
+```
+
 ## Commands
 
 - `:ZXBuild` - build a TAP file
@@ -67,38 +99,6 @@ You can also define your own key bindings in the plugin configuration:
     -- ...
     build_key = "<F9>",
     run_key = "<F10>",
-  },
-}
-```
-
-## Configuration (Optional)
-
-All configuration options can be overridden during plugin initialization.
-
-```lua
-{
-  "dknight/zx.nvim",
-  name = "zx.nvim",
-
-  -- Optional: LuaSnip support
-  dependencies = {
-    "L3MON4D3/LuaSnip",
-  },
-
-  opts = {
-    save_before_compile = true,
-    auto_renumber = true,
-
-    emulator = "fbzx",
-    window_name = "FBZX",
-
-    basic_compiler = "zmakebas",
-    assembler = "sjasmplus",
-
-    build_key = "<leader>b",
-    run_key = "<leader>r",
-    clean_key = "<leader>x",
-    renumber_key = "<leader>n",
   },
 }
 ```
