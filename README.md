@@ -8,6 +8,17 @@ The plugin is primarily designed for GNU/Linux and should also work on macOS out
 
 ## Installation
 
+### The most minial setup lazy.nvim
+
+```lua
+{
+    "dknight/zx.nvim",
+    opts = {}, -- required
+}
+```
+
+### Extended setup
+
 Basic configuration. Here, `fbzx` is used as the emulator, but you can choose any emulator you prefer.
 
 ```lua
