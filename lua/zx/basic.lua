@@ -101,8 +101,9 @@ function M.renumber_lines()
 	local number = 10
 
 	for _, line in ipairs(lines) do
-		local skip_line = line:match("^%s*$")
-			or line:match("^%s*[Rr][Ee][Mm]%f[%W]")
+		local skip_line =
+			line:match("^%s*$")
+			or line:match("^%s*[Rr][Ee][Mm]%s+%S")
 
 		if skip_line then
 			table.insert(new_lines, line)
