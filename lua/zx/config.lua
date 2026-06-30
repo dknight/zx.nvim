@@ -9,6 +9,7 @@ M.options = {
 	assembler = "sjasmplus",
 	build_key = "<leader>b",
 	run_key = "<leader>r",
+	comment_key = "<leader>c",
 	clean_key = "<leader>x",
 	renumber_key = "<leader>n",
 	-- temporary hook after running emulator

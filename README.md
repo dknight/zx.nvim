@@ -67,6 +67,7 @@ All configuration options can be overridden during plugin initialization.
     run_key = "<leader>r",
     clean_key = "<leader>x",
     renumber_key = "<leader>n",
+    comment_key = "<leader>c",
   },
 }
 ```
