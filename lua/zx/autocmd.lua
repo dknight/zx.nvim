@@ -168,12 +168,6 @@ function M.setup()
 				return
 			end
 
-			local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-			for i, line in ipairs(lines) do
-				lines[i] = line:gsub("^(%d+)%s*", "%1\t")
-			end
-
-			vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
 			basic.renumber_lines()
 		end,
 	})
