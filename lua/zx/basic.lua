@@ -108,34 +108,31 @@ function M.renumber_lines()
 		if skip_line then
 			table.insert(new_lines, line)
 		else
-			local old_num, tail = line:match("^%s*(%d+)(.*)$")
+			local prefix, old_num, tail =
+				line:match("^(%s*)(%d+)(.*)$")
+
 			old_num = tonumber(old_num)
 
 			if old_num then
-				if old_num == number then
-					table.insert(
-						new_lines,
-						string.format("%04d%s", old_num, tail)
-					)
+				local new_number = old_num
 
+				if old_num == number then
 					number = number + step
 				elseif old_num > (number - step) and old_num < number then
-					table.insert(
-						new_lines,
-						string.format("%04d%s", old_num, tail)
-					)
+					-- nop
 				else
-					table.insert(
-						new_lines,
-						string.format("%04d%s", number, tail)
-					)
-
+					new_number = number
 					number = number + step
 				end
+
+				table.insert(
+					new_lines,
+					string.format("%s%04d%s", prefix, new_number, tail)
+				)
 			else
 				table.insert(
 					new_lines,
-					string.format("%04d %s", number, line)
+					string.format("%s%04d %s", "", number, line)
 				)
 
 				number = number + step
