@@ -101,32 +101,33 @@ function M.renumber_lines()
 	local number = 10
 
 	for _, line in ipairs(lines) do
-		local skip_line = line:match("^%s*$")
-			or line:match("^%s*[Rr][Ee][Mm]%f[%W]")
+		local skip_line =
+			line:match("^%s*$")
+			or line:match("^%s*[Rr][Ee][Mm]%s+%S")
 
 		if skip_line then
 			table.insert(new_lines, line)
 		else
-			local old_num, rest = line:match("^%s*(%d+)(.*)$")
+			local old_num, tail = line:match("^%s*(%d+)(.*)$")
 			old_num = tonumber(old_num)
 
 			if old_num then
 				if old_num == number then
 					table.insert(
 						new_lines,
-						string.format("%04d %s", old_num, rest)
+						string.format("%04d%s", old_num, tail)
 					)
 
 					number = number + step
 				elseif old_num > (number - step) and old_num < number then
 					table.insert(
 						new_lines,
-						string.format("%04d %s", old_num, rest)
+						string.format("%04d%s", old_num, tail)
 					)
 				else
 					table.insert(
 						new_lines,
-						string.format("%04d %s", number, rest)
+						string.format("%04d%s", number, tail)
 					)
 
 					number = number + step
