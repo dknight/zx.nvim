@@ -6,6 +6,7 @@ M.options = {
 	emulator = "fbzx",
 	window_name = "FBZX",
 	basic_compiler = "zmakebas",
+	basic_vim_commentary_disabled = true,
 	assembler = "sjasmplus",
 	build_key = "<leader>b",
 	run_key = "<leader>r",

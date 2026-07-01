@@ -56,6 +56,7 @@ All configuration options can be overridden during plugin initialization.
   opts = {
     save_before_compile = true,
     auto_renumber = true,
+	basic_vim_commentary_disabled = true,
 
     emulator = "fbzx",
     window_name = "FBZX",

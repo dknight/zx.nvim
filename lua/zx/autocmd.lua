@@ -154,8 +154,9 @@ function M.setup()
 				}
 			)
 			vim.keymap.set("n", opts.comment_key, toggle_basic_comment)
-			-- This overrides vim-commentary keymap.
-			vim.keymap.set("n", "gcc", toggle_basic_comment)
+			if opts.basic_vim_commentary_disabled then
+				vim.keymap.set("n", "gcc", toggle_basic_comment)
+			end
 		end,
 	})
 
