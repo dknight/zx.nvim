@@ -3,7 +3,7 @@ vim.api.nvim_set_hl(0, "zxbLineNumber", {
 })
 
 vim.api.nvim_set_hl(0, "zxbComment", {
-	fg = "#666666",
+	fg = "#0000ff",
 	italic = true,
 })
 
