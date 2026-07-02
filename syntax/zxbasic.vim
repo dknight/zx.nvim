@@ -184,10 +184,10 @@ syntax keyword zxbOperator
 "-------------------------------------------------------------------------
 " Highlight groups
 "-------------------------------------------------------------------------
-highlight default zxbComment guifg=#666666 gui=italic ctermfg=244 cterm=italic
-highlight default link zxbString           String
+highlight zxbComment guifg=#666666 gui=italic
+highlight zxbLineNumber guifg=#505050
+
 highlight default link zxbNumber           Number
-highlight default zxbLineNumber guifg=#505050 ctermfg=239
 
 highlight default link zxbFlow             Conditional
 highlight default link zxbStatement        Statement
