@@ -27,8 +27,10 @@ syntax match zxbLineNumber "^\s*\zs\d\+"
 "-------------------------------------------------------------------------
 " Numbers
 "-------------------------------------------------------------------------
-
-syntax match zxbNumber "\<\d\+\>" containedin=ALLBUT,zxbLineNumber
+" TODO
+" Numbers are not so important in BASIC, so just remove highlights until
+" I find better solution. Because, it overrides the zxbLineNumber
+" syntax match zxbNumber "\<\d\+\>" containedin=ALLBUT,zxbLineNumber
 
 "-------------------------------------------------------------------------
 " Flow control
