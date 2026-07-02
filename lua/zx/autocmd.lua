@@ -40,7 +40,7 @@ function M.setup()
 	-- BASIC filetype config
 	----------------------------------------------------------------------
 	vim.api.nvim_create_autocmd("FileType", {
-		pattern = "basic",
+		pattern = "zxbasic",
 
 		callback = function(args)
 			-- Local options
