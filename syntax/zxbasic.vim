@@ -69,9 +69,8 @@ syntax keyword zxbScreen
     \ CLS
     \ AT
     \ TAB
-
 "-------------------------------------------------------------------------
-" Screen attributes
+" Screen colours / attributes
 "-------------------------------------------------------------------------
 
 syntax keyword zxbColour
@@ -80,8 +79,8 @@ syntax keyword zxbColour
     \ BORDER
     \ FLASH
     \ BRIGHT
-    \ OVER
     \ INVERSE
+    \ OVER
 
 "-------------------------------------------------------------------------
 " Graphics
@@ -96,8 +95,7 @@ syntax keyword zxbGraphics
 " Sound
 "-------------------------------------------------------------------------
 
-syntax keyword zxbSound
-    \ BEEP
+syntax keyword zxbSound BEEP
 
 "-------------------------------------------------------------------------
 " Memory / machine
@@ -131,10 +129,10 @@ syntax match zxbStorage "\<OPEN\s*#\>"
 syntax match zxbStorage "\<CLOSE\s*#\>"
 
 "-------------------------------------------------------------------------
-" Math functions
+" Functions
 "-------------------------------------------------------------------------
 
-syntax keyword zxbMathFunction
+syntax keyword zxbFunction
     \ ABS
     \ ASN
     \ ACS
@@ -147,30 +145,18 @@ syntax keyword zxbMathFunction
     \ LN
     \ SGN
     \ SQR
-    \ PI
-    \ RND
-
-"-------------------------------------------------------------------------
-" String functions
-"-------------------------------------------------------------------------
-
-syntax keyword zxbStringFunction
+    \ CODE
     \ CHR$
     \ STR$
-    \ VAL$
-    \ SCREEN$
-    \ INKEY$
-
-"-------------------------------------------------------------------------
-" General functions
-"-------------------------------------------------------------------------
-
-syntax keyword zxbFunction
-    \ CODE
     \ VAL
+    \ VAL$
     \ LEN
+    \ SCREEN$
     \ ATTR
     \ POINT
+    \ PI
+    \ RND
+    \ INKEY$
 
 "-------------------------------------------------------------------------
 " Operators
@@ -182,28 +168,45 @@ syntax keyword zxbOperator
     \ NOT
 
 "-------------------------------------------------------------------------
+" Binary literals
+"-------------------------------------------------------------------------
+
+syntax keyword zxbBinaryKeyword BIN
+
+syntax match zxbBinary "\<BIN\s\+\zs[01]\+\>"
+
+highlight default link zxbBinaryKeyword Keyword
+highlight default link zxbBinary Number
+
+"-------------------------------------------------------------------------
+" Line references
+"-------------------------------------------------------------------------
+
+syntax match zxbLineRef "\<GOTO\s\+\zs\d\+\>"
+syntax match zxbLineRef "\<GOSUB\s\+\zs\d\+\>"
+syntax match zxbLineRef "\<RESTORE\s\+\zs\d\+\>"
+syntax match zxbLineRef "\<RUN\s\+\zs\d\+\>"
+
+highlight default link zxbLineRef Underlined
+
+"-------------------------------------------------------------------------
 " Highlight groups
 "-------------------------------------------------------------------------
-highlight zxbComment guifg=#666666 gui=italic
-highlight zxbLineNumber guifg=#505050
 
-highlight default link zxbNumber           Number
+highlight default link zxbComment      Comment
+highlight default link zxbString       String
+highlight default link zxbNumber       Number
+highlight default link zxbLineNumber   LineNr
 
-highlight default link zxbFlow             Conditional
-highlight default link zxbStatement        Statement
-highlight default link zxbScreen           Identifier
-
-highlight default link zxbColour           Special
-highlight default link zxbGraphics         Keyword
-highlight default link zxbSound            Special
-
-highlight default link zxbMachine          PreProc
-highlight default link zxbStorage          Type
-
-highlight default link zxbMathFunction     Function
-highlight default link zxbStringFunction   Function
-highlight default link zxbFunction         Function
-
-highlight default link zxbOperator         Operator
+highlight default link zxbFlow         Conditional
+highlight default link zxbStatement    Statement
+highlight default link zxbScreen       Identifier
+highlight default link zxbColour       Special
+highlight default link zxbGraphics     Keyword
+highlight default link zxbSound        Special
+highlight default link zxbMachine      PreProc
+highlight default link zxbStorage      Type
+highlight default link zxbFunction     Function
+highlight default link zxbOperator     Operator
 
 let b:current_syntax = "zxbasic"

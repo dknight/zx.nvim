@@ -9,6 +9,7 @@ function M.setup(opts)
 	require("zx.config").setup(opts)
 	require("zx.autocmd").setup()
 	require("zx.commands").setup()
+	require("zx.highlight")
 	initialized = true
 end
 
