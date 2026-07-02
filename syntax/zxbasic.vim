@@ -22,7 +22,7 @@ syntax region zxbString start=+"+ skip=+""+ end=+"+
 " Line numbers
 "-------------------------------------------------------------------------
 
-syntax match zxbLineNumber "^\s*\d\+"
+syntax match zxbLineNumber "^\s*\zs\d\+"
 
 "-------------------------------------------------------------------------
 " Numbers
