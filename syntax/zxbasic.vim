@@ -28,7 +28,7 @@ syntax match zxbLineNumber "^\s*\zs\d\+"
 " Numbers
 "-------------------------------------------------------------------------
 
-syntax match zxbNumber "\<\d\+\>"
+syntax match zxbNumber "\<\d\+\>" containedin=ALLBUT,zxbLineNumber
 
 "-------------------------------------------------------------------------
 " Flow control
