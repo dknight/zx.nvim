@@ -61,7 +61,7 @@ function M.setup()
 				end
 
 				local prev = tonumber(num)
-				local step = 10
+				local step = opts.basic_line_increment or 10
 
 				return string.format(
 					"%s\n%04d",
@@ -167,7 +167,7 @@ function M.setup()
 		pattern = "*.bas",
 
 		callback = function()
-			if not config.options.auto_renumber then
+			if not config.options.basic_auto_renumber then
 				return
 			end
 

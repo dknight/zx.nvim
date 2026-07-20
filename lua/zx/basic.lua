@@ -18,15 +18,13 @@ function M.get_tap_file()
 end
 
 function M.build()
-	local opts = config.options
-
-	if not utils.check_executable(opts.basic_compiler) then
+	if not utils.check_executable(config.options.basic_compiler) then
 		return { code = 1 }
 	end
 
 	local build = vim.system(
 		{
-			opts.basic_compiler,
+			config.options.basic_compiler,
 			"-o",
 			M.get_tap_file(),
 			M.get_bas_file(),
@@ -44,21 +42,21 @@ function M.build()
 end
 
 function M.run()
-	local opts = config.options
-
-	if not utils.check_executable(opts.emulator) then
+	if not utils.check_executable(config.options.emulator) then
 		return
 	end
 
 	vim.notify("Emulation running...")
+	local emu_opts = config.options.emulator_opts
+	local nosound = emu_opts.nosound and "-nosound" or ""
 
 	-- FIXME kinda hack just for me remove later
-	if opts.emu_hook then
+	if emu_opts.hook then
 		vim.system({
 			"sh",
 			"-c",
 			string.format([[
-%s -nosound "%s" &
+%s %s "%s" &
 sleep 3
 xdotool search --name "%s" | tail -n1 | xargs xdotool windowactivate
 sleep 0.2
@@ -76,13 +74,18 @@ xdotool key Return
 sleep 0.2
 xdotool key r
 xdotool key Return
-        ]], opts.emulator, M.get_tap_file(), opts.window_name),
+        ]],
+				config.options.emulator,
+				nosound,
+				M.get_tap_file(),
+				config.options.window_name
+			),
 		}, {
 			detach = true,
 		})
 	else
 		vim.system({
-				opts.emulator,
+				config.options.emulator,
 				M.get_tap_file(),
 			},
 			{
@@ -97,8 +100,8 @@ function M.renumber_lines()
 
 	local new_lines = {}
 
-	local step = 10
-	local number = 10
+	local step = config.options.basic_line_increment
+	local number = config.options.basic_line_increment
 
 	for _, line in ipairs(lines) do
 		local skip_line =

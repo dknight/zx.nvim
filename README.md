@@ -55,13 +55,15 @@ All configuration options can be overridden during plugin initialization.
 
   opts = {
     save_before_compile = true,
-    auto_renumber = true,
+
+    basic_auto_renumber = true,
 	basic_vim_commentary_disabled = true,
+    basic_compiler = "zmakebas",
+    basic_line_increment = 10,
 
     emulator = "fbzx",
     window_name = "FBZX",
 
-    basic_compiler = "zmakebas",
     assembler = "sjasmplus",
 
     build_key = "<leader>b",
